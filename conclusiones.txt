@@ -30,3 +30,5 @@ Conclusiones:
 - Playwright permite la ejecucion de pruebas API por lo que se realizo como parte del mismo proyecto
 
 - Para las pruebas de UI se selecciono la Opcion 2, para las pruebas de API se selecciono la Opcion 1
+
+- Se adiciono un archivo yml para la ejecucion de GITHUB actions como parte de un proceso de CI/CD

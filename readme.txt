@@ -34,9 +34,11 @@ Este comando instalará todas las bibliotecas y módulos necesarios para ejecuta
 Ahora puedes ejecutar las pruebas del proyecto de Playwright utilizando el siguiente comando:
 
     npx playwright test
-o puedes ejecutar el script del package.json para que ejecuten en modo headed:
+o puedes ejecutar algun script del package.json:
     npm run test:headed
-
+    npm run test:api
+    npm run test:buy
+    
 Esto iniciará las pruebas automatizadas según lo configurado en playwright.config.js
 
 ### Paso 5: Ver los Resultados
