@@ -21,17 +21,14 @@ test('Login and Buy Two Products', async ({ page }) => {
         expect(cartItemNames[i]).toBe(Constants.productNames[i]);
     }
     //Check out part one
-    await page.locator('button').getByText("Checkout").click();
-    await saucedemo.fillCheckOutInformation("Ricardo", "Osegueda", "CP 1502")
+    await page.locator(Constants.BUTTON).getByText(Constants.CHECKOUT).click();
+    await saucedemo.fillCheckOutInformation(Constants.RICARDO, Constants.OSEGUEDA, Constants.CP_1502)
     //check out part two
     const itemPriceSum = await saucedemo.calculateItemPriceSum()
     const subtotalNumber = await saucedemo.extractSubtotalNumber()
     expect(itemPriceSum).toEqual(subtotalNumber)
     //validate confirmation message
-    await page.locator('button').getByText("Finish").click();
-    const headerConfirmationMessage = "Thank you for your order!"
-    const completeConfirmationMessage = "Your order has been dispatched, and will arrive just as fast as the pony can get there!"
-    expect(headerConfirmationMessage).toBe(await saucedemo.headerConfirmationMsg.innerText())
-    expect(completeConfirmationMessage).toBe(await saucedemo.completeConfirmationMsg.innerText())
-    await page.pause()
+    await page.locator(Constants.BUTTON).getByText(Constants.FINISH).click();
+    expect(Saucedemo.headerConfirmationMessage).toBe(await saucedemo.headerConfirmationMsg.innerText())
+    expect(Saucedemo.completeConfirmationMessage).toBe(await saucedemo.completeConfirmationMsg.innerText())
 });
