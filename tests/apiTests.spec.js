@@ -15,9 +15,9 @@ const numericValue = parseInt(
     `${year}${month.toString().padStart(2, '0')}${day.toString().padStart(2, '0')}${hour.toString().padStart(2, '0')}${minutes.toString().padStart(2, '0')}${seconds.toString().padStart(2, '0')}`
 );
 
-const dinammicUserName = "ricardo" + numericValue
+const dynamicUserName = "ricardo" + numericValue
 const user = {
-    username: dinammicUserName,
+    username: dynamicUserName,
     password: "osegueda"
 }
 
