@@ -16,6 +16,8 @@ class Saucedemo {
         this.zipPostalCodeField = page.locator('input[data-test="postalCode"]')
         this.continueBtn = page.locator('input[data-test="continue"]')
         this.inventoryItemPrices = page.locator('div.inventory_item_price')
+        this.headerConfirmationMsg = page.locator('h2.complete-header')
+        this.completeConfirmationMsg = page.locator('div.complete-text')
 
     }
     // Login Page:
