@@ -16,6 +16,7 @@ class Saucedemo {
         this.zipPostalCodeField = page.locator('input[data-test="postalCode"]')
         this.continueBtn = page.locator('input[data-test="continue"]')
         this.inventoryItemPrices = page.locator('div.inventory_item_price')
+        this.subtotalPrice = page.locator('div.summary_subtotal_label')
         this.headerConfirmationMsg = page.locator('h2.complete-header')
         this.completeConfirmationMsg = page.locator('div.complete-text')
 
@@ -58,7 +59,8 @@ class Saucedemo {
     }
 
     async extractSubtotalNumber() {
-        const subtotalText = await this.page.locator('div.summary_subtotal_label').innerText();
+        // const subtotalText = await this.page.locator('div.summary_subtotal_label').innerText();
+        const subtotalText = await this.subtotalPrice .innerText();
         const regex = /\d+\.\d+/; 
         const matches = subtotalText.match(regex);
         if (matches) {
