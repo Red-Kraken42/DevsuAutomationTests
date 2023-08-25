@@ -22,24 +22,16 @@ test('Login and Buy Two Products', async ({ page }) => {
     }
     //Check out part one
     await page.locator('button').getByText("Checkout").click();
-    // await page.locator('input[data-test="firstName"]').type("Ricardo")
-    // await page.locator('input[data-test="lastName"]').type("Osegueda")
-    // await page.locator('input[data-test="postalCode"]').type("CP 1502")
-    // await page.locator('input[data-test="continue"]').click()
-    await saucedemo.fillCheckOutInformation("Ricardo","Osegueda","CP 1502")
-
+    await saucedemo.fillCheckOutInformation("Ricardo", "Osegueda", "CP 1502")
     //check out part two
-    const priceText1 = await page.locator('div.inventory_item_price').nth(0).innerText();
-    const priceNumber1 = parseFloat(priceText1.replace('$', ''));
-    const priceText2 = await page.locator('div.inventory_item_price').nth(0).innerText();
-    const priceNumber2 = parseFloat(priceText2.replace('$', ''));
-
-    const totalPrice = priceNumber1 + priceNumber2;
-    console.log(totalPrice);
-    console.log(await page.locator('div.summary_subtotal_label').innerText());
-
+    const itemPriceSum = await saucedemo.calculateItemPriceSum()
+    const subtotalNumber = await saucedemo.extractSubtotalNumber()
+    expect(itemPriceSum).toEqual(subtotalNumber)
+    //validate confirmation message
     await page.locator('button').getByText("Finish").click();
-    console.log(await page.locator('h2.complete-header').nth(0).innerText());
-    console.log(await page.locator('div.complete-text').nth(0).innerText());
+    const headerConfirmationMessage = "Thank you for your order!"
+    const completeConfirmationMessage = "Your order has been dispatched, and will arrive just as fast as the pony can get there!"
+    expect(headerConfirmationMessage).toBe(await saucedemo.headerConfirmationMsg.innerText())
+    expect(completeConfirmationMessage).toBe(await saucedemo.completeConfirmationMsg.innerText())
     await page.pause()
 });
