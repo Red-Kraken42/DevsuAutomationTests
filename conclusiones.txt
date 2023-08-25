@@ -1,0 +1,32 @@
+Hallazgos:
+
+- Se utilizan pruebas con Playwright para automatizar el flujo de compra de productos en un sitio web.
+
+- Se emplea un archivo JSON para almacenar las credenciales de inicio de sesión.
+
+- Se utiliza una clase Saucedemo (pageObjects) para encapsular la funcionalidad relacionada con la página de Saucedemo. Esta abstracción es una buena práctica para mejorar la modularidad y reutilización del código.
+
+- Se utilizan constantes definidas en una clase Constants para almacenar valores como nombres de productos, números y textos utilizados en las pruebas. Esto hace que el código sea más mantenible y fácil de actualizar.
+
+- Se usa un bucle for...of para agregar productos al carrito de compras. Esto es eficiente y facilita la adición de nuevos productos en el futuro.
+
+- Debido al alcance del ejercicio se realizo un solo test que abarca el flujo completo desde login hasta la finalizacion de compra de dos productos,
+    sin embargo es posible reutilizar las funciones para elaborar tests mas modulares abarcando diferentes escenarios
+
+- las pruebas y funciones de api se realizaron en un solo archivo apiTests.spec.js, para una mayor comprension
+    - Se genero un valor dinamico compuesto por el año+mes+dia+hora+min+segundo
+    - Esto con el objetivo de tener un username nuevo siempre
+
+Conclusiones:
+
+- El código de prueba funciona correctamente para el flujo de compra de dos productos en el sitio web de Saucedemo.
+
+- Se siguen buenas prácticas al utilizar constantes para valores que podrían cambiar en el futuro, lo que facilita la actualización de las pruebas.
+
+- La abstracción de la clase Saucedemo es útil para organizar y reutilizar el código relacionado con la página web.
+
+- Se manejan aspectos de inicio de sesión, navegación por la página, agregar productos al carrito y el proceso de pago.
+
+- Playwright permite la ejecucion de pruebas API por lo que se realizo como parte del mismo proyecto
+
+- Para las pruebas de UI se selecciono la Opcion 2, para las pruebas de API se selecciono la Opcion 1
