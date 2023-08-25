@@ -13,11 +13,15 @@ class Saucedemo {
         await this.page.goto("https://www.saucedemo.com/");
     }
 
-    async submitSuccessLogin(userName,password){
+    async submitSuccessLogin(userName, password) {
         await this.usernameField.type(userName)
         await this.passwordField.type(password)
         await this.loginBtn.click()
         await this.page.waitForURL('**/inventory.html')
+    }
+    async addItemToCart(productName) {
+        const elementLocator = this.page.locator(`//*[text()="${productName}"]/ancestor::div[@class="inventory_item_description"]`);
+        await elementLocator.locator('//button').click();
     }
 }
 
