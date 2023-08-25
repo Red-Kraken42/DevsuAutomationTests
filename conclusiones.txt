@@ -32,3 +32,5 @@ Conclusiones:
 - Para las pruebas de UI se selecciono la Opcion 2, para las pruebas de API se selecciono la Opcion 1
 
 - Se adiciono un archivo yml para la ejecucion de GITHUB actions como parte de un proceso de CI/CD
+
+- validar el archivo .gitignnore para entender que archivos se manejan solo a nivel local
