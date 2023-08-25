@@ -1,6 +1,6 @@
-// const {test, expect} = require('@playwright/test');
-
 class Saucedemo {
+    static headerConfirmationMessage = "Thank you for your order!"
+    static completeConfirmationMessage = "Your order has been dispatched, and will arrive just as fast as the pony can get there!"
     constructor(page) {
         this.page = page;
         this.usernameField = page.locator('input[data-test="username"]');
@@ -19,19 +19,19 @@ class Saucedemo {
         this.subtotalPrice = page.locator('div.summary_subtotal_label')
         this.headerConfirmationMsg = page.locator('h2.complete-header')
         this.completeConfirmationMsg = page.locator('div.complete-text')
-
     }
+
     // Login Page:
     async goToLoginPage() {
         await this.page.goto("https://www.saucedemo.com/");
     }
-
     async submitSuccessLogin(userName, password) {
         await this.usernameField.type(userName)
         await this.passwordField.type(password)
         await this.loginBtn.click()
         await this.page.waitForURL('**/inventory.html')
     }
+
     // Inventory Page:
     async addItemToCart(productName) {
         const elementLocator = this.page.locator(`//*[text()="${productName}"]/ancestor::div[@class="inventory_item_description"]`);
@@ -45,6 +45,7 @@ class Saucedemo {
         await this.zipPostalCodeField.type(zipPostalCode)
         await this.continueBtn.click()
     }
+
     //check out page 2:
     async calculateItemPriceSum() {
         let totalPrice = 0;
@@ -59,7 +60,6 @@ class Saucedemo {
     }
 
     async extractSubtotalNumber() {
-        // const subtotalText = await this.page.locator('div.summary_subtotal_label').innerText();
         const subtotalText = await this.subtotalPrice .innerText();
         const regex = /\d+\.\d+/; 
         const matches = subtotalText.match(regex);
